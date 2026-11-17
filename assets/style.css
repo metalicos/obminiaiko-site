@@ -46,6 +46,7 @@ img { max-width: 100%; height: auto; display: block; }
 .nav { margin-left: auto; display: flex; gap: 4px; flex-wrap: wrap; }
 .nav a { color: var(--ink); text-decoration: none; font-weight: 700; padding: 10px 12px; border-radius: 12px; }
 .nav a:hover, .nav a[aria-current="page"] { background: var(--surface-muted); }
+.nav .short { display: none; }
 
 /* Typography */
 h1, h2, h3 { font-family: "Unbounded", "Manrope", sans-serif; font-weight: 600; line-height: 1.2; letter-spacing: -0.01em; margin: 0 0 .5em; }
@@ -116,7 +117,7 @@ details > div { padding-bottom: 16px; color: var(--ink-2); }
 @media (max-width: 600px) {
   body { font-size: 16px; }
   .wrap { width: calc(100% - 32px); }
-  h1 { font-size: 30px; overflow-wrap: anywhere; hyphens: auto; }
+  h1 { font-size: clamp(24px, 7.6vw, 30px); overflow-wrap: break-word; hyphens: manual; }
   h2 { font-size: 23px; }
   .lead { font-size: 17px; }
 
@@ -127,6 +128,8 @@ details > div { padding-bottom: 16px; color: var(--ink-2); }
   .nav { gap: 0; flex-wrap: nowrap; }
   .nav a { font-size: 14px; padding: 8px; white-space: nowrap; }
   .nav a:first-child { display: none; } /* the logo already leads home */
+  .nav .long { display: none; }
+  .nav .short { display: inline; }
 
   /* Hero: no duplicate icon, full-width buttons, a smaller phone shot */
   .hero { padding: 24px 0 8px; }
@@ -160,6 +163,12 @@ details > div { padding-bottom: 16px; color: var(--ink-2); }
   summary::after { position: absolute; right: 0; top: 14px; float: none; }
 
   .site-footer .wrap { flex-direction: column; gap: 10px; }
+}
+
+/* The narrowest phones (320–360 pt): logo icon only so the menu fits */
+@media (max-width: 360px) {
+  .brand-name { display: none; }
+  .nav { margin-left: auto; }
 }
 
 @media (prefers-reduced-motion: no-preference) {
