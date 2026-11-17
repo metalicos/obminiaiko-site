@@ -107,10 +107,61 @@ details > div { padding-bottom: 16px; color: var(--ink-2); }
 .site-footer nav { display: flex; gap: 16px; flex-wrap: wrap; }
 
 @media (max-width: 860px) {
-  .hero .wrap { grid-template-columns: 1fr; }
-  .grid { grid-template-columns: 1fr; }
+  .hero .wrap { grid-template-columns: 1fr; gap: 28px; }
+  .grid, .grid.two { grid-template-columns: 1fr; }
   .hero { padding-top: 32px; }
 }
+
+/* Phones */
+@media (max-width: 600px) {
+  body { font-size: 16px; }
+  .wrap { width: calc(100% - 32px); }
+  h1 { font-size: 30px; overflow-wrap: anywhere; hyphens: auto; }
+  h2 { font-size: 23px; }
+  .lead { font-size: 17px; }
+
+  /* Header: logo on the left, compact links that never wrap under it */
+  .site-header .wrap { min-height: 56px; gap: 8px; }
+  .brand { font-size: 17px; gap: 8px; flex-shrink: 0; }
+  .brand img { width: 32px; height: 32px; border-radius: 8px; }
+  .nav { gap: 0; flex-wrap: nowrap; }
+  .nav a { font-size: 14px; padding: 8px; white-space: nowrap; }
+  .nav a:first-child { display: none; } /* the logo already leads home */
+
+  /* Hero: no duplicate icon, full-width buttons, a smaller phone shot */
+  .hero { padding: 24px 0 8px; }
+  .hero-icon { display: none; }
+  .chip { margin-bottom: 12px; }
+  .badges { flex-direction: column; gap: 10px; }
+  .button { width: 100%; justify-content: center; min-height: 54px; }
+  .hero-shot { width: min(260px, 72vw); border-radius: 30px; }
+
+  section { padding: 28px 0; }
+
+  /* Feature cards: icon beside the title, tighter padding */
+  .grid { gap: 10px; }
+  .card { padding: 16px; display: grid; grid-template-columns: 40px 1fr; column-gap: 14px; align-items: start; }
+  .card .icon { margin: 0; grid-row: span 2; }
+  .card h3 { font-size: 17px; margin: 8px 0 4px; }
+  .card p { font-size: 15px; }
+  .grid.two .card { display: block; }
+  .grid.two .card h3 { margin-top: 0; }
+
+  /* Screenshots: swipeable, edge to edge, one and a bit visible */
+  .shots { grid-auto-columns: 62vw; gap: 12px; margin-inline: -16px; padding: 4px 16px 12px; scroll-padding-inline: 16px; }
+  .shots img { border-radius: 24px; }
+
+  .privacy-banner { padding: 22px; border-radius: 18px; }
+
+  .article { padding: 28px 0 40px; }
+  .article h2 { font-size: 20px; }
+  details { padding: 2px 16px; }
+  summary { padding: 14px 24px 14px 0; position: relative; }
+  summary::after { position: absolute; right: 0; top: 14px; float: none; }
+
+  .site-footer .wrap { flex-direction: column; gap: 10px; }
+}
+
 @media (prefers-reduced-motion: no-preference) {
   .button, .nav a { transition: transform .15s ease; }
   .button:active { transform: scale(.96); }
